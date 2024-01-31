@@ -1,0 +1,24 @@
+{
+	"schemaVersion": 1,
+	"id": "itemuserestrictor",
+	"version": "${version}",
+	"name": "ItemUseRestrictor",
+	"description": "Restrict item usage to a certain area",
+	"authors": [
+		"falseresync"
+	],
+	"license": "Apache-2.0",
+	"icon": "assets/itemuserestrictor/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"server": [
+			"dev.falseresync.itemuserestrictor.ItemUseRestrictor"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.15.6",
+		"minecraft": "~1.20.4",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
