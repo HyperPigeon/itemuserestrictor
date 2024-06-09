@@ -5,7 +5,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.math.BlockBox;
-import net.minecraft.util.math.BlockPos;
 
 public record Restriction(
         BlockBox box,

@@ -61,7 +61,7 @@ public class ItemUseRestrictor implements DedicatedServerModInitializer {
 			try (var ruleSetFileReader = Files.newBufferedReader(RULE_SET_FILE)) {
 				ruleSet = RuleSet.CODEC
 						.decode(JsonOps.INSTANCE, JsonParser.parseReader(GSON.newJsonReader(ruleSetFileReader)))
-						.getOrThrow(false, LOGGER::error)
+						.getOrThrow()
 						.getFirst();
 			} catch (IOException e) {
 				LOGGER.atError().setCause(e).setMessage("Could not read item-use-rule-set.json").log();
@@ -69,7 +69,7 @@ public class ItemUseRestrictor implements DedicatedServerModInitializer {
 		} else {
 			try (var ruleSetFileWriter = Files.newBufferedWriter(RULE_SET_FILE)) {
 				GSON.toJson(
-						RuleSet.CODEC.encodeStart(JsonOps.INSTANCE, RuleSet.EMPTY).getOrThrow(false, LOGGER::error),
+						RuleSet.CODEC.encodeStart(JsonOps.INSTANCE, RuleSet.EMPTY).getOrThrow(),
 						GSON.newJsonWriter(ruleSetFileWriter));
 			} catch (IOException e) {
 				LOGGER.atError().setCause(e).setMessage("Could not save item-use-rule-set.json").log();
@@ -83,7 +83,7 @@ public class ItemUseRestrictor implements DedicatedServerModInitializer {
 
 			try (var ruleSetFileWriter = Files.newBufferedWriter(RULE_SET_FILE)) {
 				GSON.toJson(
-						RuleSet.CODEC.encodeStart(JsonOps.INSTANCE, ruleSet).getOrThrow(false, LOGGER::error),
+						RuleSet.CODEC.encodeStart(JsonOps.INSTANCE, ruleSet).getOrThrow(),
 						GSON.newJsonWriter(ruleSetFileWriter));
 			} catch (IOException e) {
 				LOGGER.atError().setCause(e).setMessage("Could not save item-use-rule-set.json").log();
